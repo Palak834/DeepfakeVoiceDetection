@@ -9,32 +9,15 @@ This project implements a deep learning model to detect whether an audio file co
 - **Dataset**: Expects a JSON file (`data.json`) containing MFCC features and labels (not included in this repository).
 
 ## Requirements
-To run this project, install the required Python packages listed in `requirements.txt`:
-
-```bash
-pip install -r requirements.txt
-```
+To run this project, install the required Python packages listed below:
 
 Required libraries:
 - `streamlit`
 - `librosa`
 - `numpy`
 - `tensorflow`
-- `base64`
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/deepfake-voice-detection.git
-   cd deepfake-voice-detection
-   ```
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Ensure you have a trained model file (`DetectionModel.h5`) and a background image (`img.jpg`) in the specified paths, or update the paths in `temp.py` accordingly.
 
 ## Usage
 1. **Run the Streamlit app**:
@@ -50,9 +33,9 @@ Required libraries:
 ## Project Structure
 - `temp.py`: Main Streamlit application script for the web interface and prediction logic.
 - `DeepfakeVoiceDetectionModel.ipynb`: Jupyter Notebook containing the code for data preprocessing, model training, and evaluation.
-- `DetectionModel.h5`: Pre-trained model file (not included; you must train or provide your own).
-- `img.jpg`: Background image for the Streamlit app (not included; provide your own or remove the background feature).
-- `data.json`: Expected dataset file with MFCC features and labels (not included).
+- `DetectionModel.h5`: Pre-trained model file.
+- `img.jpg`: Background image for the Streamlit app.
+- `data.json`: Expected dataset file with MFCC features and labels.
 
 ## Model Details
 - **Architecture**: The model is an RNN with two LSTM layers (64 units each), followed by a dense layer (64 units, ReLU activation), a dropout layer (0.3), and an output layer (2 units, softmax activation).
@@ -65,14 +48,3 @@ Required libraries:
 2. **Prediction**: The trained LSTM model predicts the class (Real or Fake) based on the MFCC features.
 3. **Web Interface**: The Streamlit app allows users to upload audio files, processes them, and displays the prediction.
 
-## Notes
-- Update the file paths for `DetectionModel.h5` and `img.jpg` in `temp.py` to match your local setup.
-- The dataset (`data.json`) is not included. You need to prepare your own dataset with MFCC features and corresponding labels (0 for Real, 1 for Fake).
-- The model assumes audio files are sampled at 22,050 Hz. Adjust the `SAMPLE_RATE` in `temp.py` if your audio files use a different rate.
-- The background image feature in the Streamlit app is optional and can be removed by commenting out the `set_background` function call.
-
-## Contributing
-Contributions are welcome! Please submit a pull request or open an issue for suggestions, bug reports, or improvements.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
